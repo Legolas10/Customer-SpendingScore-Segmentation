@@ -18,6 +18,8 @@ X=dataset.iloc[:,[3,4]].values
 #using the elbow method to fond optimal number of clusters
 from sklearn.cluster import KMeans
 wcss= []
+#now we assume we can have a maximum of 11 clusters and then from the wcss function( also refer the elbow method graph) to infer that 
+#first 5-6 are optimal number of clusters. :)
 for i in range(1,11):
     kmeans=KMeans(n_clusters=i,init='k-means++',random_state=0)
     kmeans.fit(X)
@@ -29,7 +31,7 @@ plt.ylabel('wcss value')
 plt.show()
 
    
-#NOW FROM GRAPH WE HAVE SEEN THAT K=5 I SOPTIMUM,WE FIT THE CLASS WITH N_CLUSTERS=5.
+#NOW FROM GRAPH WE HAVE SEEN THAT K=5 IS OPTIMUM,WE FIT THE CLASS WITH N_CLUSTERS=5.
 kmeans=KMeans(n_clusters=5,init='k-means++',random_state=0)
 y_kmeans_pred=kmeans.fit_predict(X)
 y=kmeans.cluster_centers_
